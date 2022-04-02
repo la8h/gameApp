@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" type="text/css" media="all"
+ href="css/mycss.css" th:href="@{/css/mycss.css}" />
+
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+
+<body>
+<h1>Search Page</h1>
+<form th:action="@{/searchIsbn}">
+   ISBN: <input type="text" name="isbn" /> <br/>
+   <input type="submit" value="Search ISBN" />
+</form>
+<a th:href="@{/addGame}">Home</a>
+
+
+<table>
+<tr>
+	<th>ISBN</th>
+	<th>Name</th>
+	<th>Producer</th>
+	<th>Price</th>
+	<th>Category</th>	
+</tr>
+<tr th:each="game:${games}">
+  	<td th:text="${game.isbn}"></td> 
+	<td th:text="${game.name}"></td>
+	<td th:text="${game.producer}"></td>
+	<td th:text="${game.price}"></td>
+	<td th:text="${game.category}"></td>	
+	<td><a href=""th:href="@{/editlink/{id}(id=${game.id})}">EDIT</a></td>
+	<td><a href=""th:href="@{/deletelink/{id}(id=${game.id})}">DELETE</a></td>
+		
+	</tr>
+</table>
+<a href="/">Home</a>
+</body>
+</html>
+

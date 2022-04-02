@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" type="text/css" media="all"
+ href="css/mycss.css" th:href="@{/css/mycss.css}" />
+
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>Add Game</h1>
+    <form action="#" th:action="@{/add}" th:object="${videoGame}" method="get">
+    	<p>ISBN: <input type="text" th:field="*{isbn}" /></p>
+        <p>Name: <input type="text" th:field="*{name}" /></p>
+        <p>Producer: <input type="text" th:field="*{producer}" /></p>
+        <p>Price: <input type="text" th:field="*{price}" /></p>
+        <p>Category: <select th:field="*{category}" >
+        	<option th:each="c:*{categories}" th:value="${c}" th:text="${c}"/>
+        	</select></p>
+        <p><input type="submit" value="Submit" /> </p>
+    </form>
+<a th:href="@{/search}">Home</a>
+<a href="/viewGames">View List</a>
+</body>
+</html>
